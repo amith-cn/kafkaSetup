@@ -26,19 +26,6 @@ services:
     networks:
       - kafka_network
 
-  kafdrop:
-    image: obsidiandynamics/kafdrop:latest
-    container_name: kafdrop
-    ports:
-      - "9000:9000" # Expose Kafdrop UI on port 9000
-    environment:
-      KAFKA_BROKERCONNECT: "kafka:9092" # Connect to Kafka broker
-      JVM_OPTS: "-Xms32M -Xmx64M" # Adjust JVM memory for Kafdrop
-    depends_on:
-      - kafka
-    networks:
-      - kafka_network
-
 networks:
   kafka_network:
     driver: bridge
